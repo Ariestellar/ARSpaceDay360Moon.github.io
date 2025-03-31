@@ -5,23 +5,22 @@
 		<title>Moon</title>
 		<style>
       body { margin: 0; overflow: hidden; }
-      #okButton {
+      #soundButton {
           position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          padding: 15px 30px;
-          font-size: 20px;
+          top: 10px;
+          right: 10px;
+          padding: 10px 20px;
+          font-size: 18px;
           background-color: #28a745;
           color: white;
           border: none;
           border-radius: 5px;
           cursor: pointer;
           z-index: 101;
-      }
+        }
       #backButton {
           position: absolute;
-          top: 20px;
+          top: 10px;
           left: 50%;
           transform: translateX(-50%);
           padding: 10px 20px;
@@ -51,7 +50,7 @@
 	<body>
     <div id="fade"></div>
     <button id="backButton">Вернуться</button>
-    <button id="okButton">ОК</button>
+    <button id="soundButton">Включить звук</button>
      <audio id="spaceAudio" loop autoplay>
       <source src="./assets/space-sound.mp3" type="audio/mp3">
       Ваш браузер не поддерживает элемент audio.
@@ -60,13 +59,15 @@
     <script>
       let fade = document.getElementById('fade');
       let backButton = document.getElementById("backButton");
-      let okButton = document.getElementById("okButton");
+      let soundButton = document.getElementById("soundButton");
 
-      okButton.addEventListener("click", () => {
-        okButton.style.display = 'none';
+      window.onload = () => {
         setTimeout(() => { fade.style.opacity = 1;
-            setTimeout(() => { fade.style.opacity = 0; }, 100);
-        }, 1000);
+        setTimeout(() => { fade.style.opacity = 0; }, 100);}, 1000);
+    };
+
+      soundButton.addEventListener("click", () => {
+        soundButton.style.display = 'none';
         let spaceAudio = document.getElementById("spaceAudio");
         spaceAudio.volume = 0.2;
         spaceAudio.play();
